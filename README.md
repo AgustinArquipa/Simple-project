@@ -6,7 +6,7 @@ Este es un proyecto base de Django diseñado específicamente para estructurar y
 
 ### 1. Crear un entorno virtual
 
-Utilizamos `venv` para manejar entornos virtuales. Para crear un nuevo entorno virtual llamado `venv-inmobiliaria`, ejecuta:
+Utilizamos `venv` para manejar entornos virtuales. Para crear un nuevo entorno virtual llamado `env-simple`, ejecuta:
 
 python3.11 -m venv venv-inmoniliaria
 
