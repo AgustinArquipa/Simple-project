@@ -83,3 +83,17 @@ class Employee(models.Model):
 
     class Meta:
         db_table = "Empleado"
+
+    def __str__(self) -> str:
+        cad = f"Nombre Completo: {self.full_name}"
+        cad += f"\nDNI: {self.dni}"
+        cad += f"\nAgrupamiento: {self.gruoping}"
+        cad += f"\nDireccion: {self.address}"
+        cad += f"\nServicio: {self.service}"
+        cad += f"\nSituacion Laboral: {self.status}"
+        cad += f"\nTaquilla: {self.box}"
+        cad += f"\nN° Patrimonial: {self.asset_number}"
+        cad += f"\nCantidad Unitaria: {self.unit}"
+        cad += f"\nUbicacion: {self.location}"
+        cad += f"\nCódigo: {self.code}"
+        return cad
