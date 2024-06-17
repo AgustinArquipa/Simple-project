@@ -1,4 +1,4 @@
-# Django Balance Project
+# Django Project
 
 Este es un proyecto base de Django diseñado específicamente para estructurar y organizar el proyecto. Proporciona una estructura escalable y está preparado para ser utilizado con una base de datos PostgreSQL.
 
