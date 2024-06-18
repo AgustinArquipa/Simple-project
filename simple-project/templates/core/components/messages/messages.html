@@ -1,0 +1,15 @@
+{% load static %}
+<!--Messages-->
+<div class="form-group">
+    {% for message in messages %}
+    <div id="message_js" class="alert alert-{{ message.tags }} alert-dissmissible fade-show" role="alert">
+        {{ message }}
+        <button type="button" class="close btn-close" data-dismiss="alert"></button>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Parte JS -->
+{% block extra_js %}
+    <script src="{% static 'core/js/time_messages.js' %}"></script>
+{% endblock %}

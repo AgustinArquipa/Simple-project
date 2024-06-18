@@ -97,3 +97,18 @@ class Employee(models.Model):
         cad += f"\nUbicacion: {self.location}"
         cad += f"\nCódigo: {self.code}"
         return cad
+
+    def to_json(self):
+        item = {}
+        item['full_name'] = self.full_name
+        item['dni'] = self.dni
+        item['grouping'] = self.gruoping
+        item['address'] = self.address
+        item['service'] = self.service
+        item['status'] = self.status
+        item['box'] = self.box
+        item['asset_number'] = self.asset_number
+        item['unit'] = str(self.unit)
+        item['location'] = self.location
+        item['code'] = self.code
+        return item

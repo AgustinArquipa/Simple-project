@@ -1,0 +1,23 @@
+/* HOJA DE ESTILOS PERSONALIZADOS DEL SELECT2 */
+
+
+/* Ajusta el z-index del contenedor de la lista de opciones del select2 */
+.select2-container--open {
+    z-index: 1060; /* o cualquier valor mayor al z-index del modal */
+}
+
+/* Para el select2 multiple */
+
+/* Le da color a los items que quedan seleccionados */
+.select2-selection__choice__remove,
+.select2-selection__choice,
+.select2-results__option--highlighted.select2-results__option--selectable{
+    color: var(--falcon-colored-link-200-hover-color) !important;
+    background-color: var(--falcon-gray-1100) !important;
+}
+
+/* Hover de la 'x' en los items seleccionados */
+.select2-selection__choice__remove:hover{
+    color: var(--falcon-youtube) !important;
+}
+/* push para alesi */

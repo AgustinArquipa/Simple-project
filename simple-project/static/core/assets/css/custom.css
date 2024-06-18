@@ -1,0 +1,97 @@
+:root, :root.light, :root .light {
+    --falcon-input-bg: #c1d1eb;
+    --falcon-input-placeholder-color: #9a9ea5;
+}
+
+.dark{
+    --falcon-input-bg: #0b1727;
+    --falcon-input-placeholder-color: #293749;
+}
+.dark ::selection {
+    background-color: #f53e60;
+}
+
+:root.dark {
+    --dt-html-background: unset;
+}
+div.dt-container .dt-search input {
+    background-color: transparent;
+}
+
+/* forms */
+fieldset {
+    margin-bottom: 4rem;
+}
+label {
+    margin-bottom: unset;
+}
+.row {
+    margin-bottom: 0.85rem;
+}
+/* TODO: chekear porque hy coflicto con estos dos row y fieldset */
+
+/* -----Iconos------- */
+ul {
+    list-style-type: none;
+}
+
+li:before {
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.5em;
+}
+
+
+li.first::before {
+    content: url(../img/icons/properties/flats-on-the-property.svg);
+}
+
+li.second::before {
+    content: url(../img/icons/properties/bathrooms.svg);
+}
+
+li.third::before {
+    content: url(../img/icons/properties/rooms.svg);
+}
+
+/* Le pone un color rojo al texto dentro del div del mensaje de error */
+/* Estilo para los inputs válidos */
+input.is-valid {
+    border: 2px solid green;
+}
+
+/* Estilo para los inputs inválidos */
+input.is-invalid {
+    border: 2px solid red;
+}
+
+/*Para los mensajes de error que vienen desde el backend*/
+.errors {
+    color: red;
+}
+
+
+/**** NAVBAR-CARD :v ****/
+
+.navbar-vertical.navbar-expand-xl.navbar-card .navbar-collapse{
+    background-color: var(--falcon-card-bg);
+}
+
+.navbar-vertical.navbar-card .navbar-nav .nav-item .nav-link:hover, .navbar-vertical.navbar-card .navbar-nav .nav-item .nav-link:focus {
+    color: var(--falcon-navbar-vertical-link-hover-color);
+}
+
+.navbar-vertical.navbar-card .navbar-nav .nav-item .nav-link {
+    color: var(--falcon-navbar-vertical-link-color);
+}
+.navbar-vertical.navbar-card .navbar-vertical-divider {
+    background-color: var(--falcon-border-color);
+}
+
+.border-left{
+    border-left: 1px solid var(--falcon-border-color) !important;
+}
+
+.nav-pills-falcon .btn{
+    color: var(--falcon-100);
+}

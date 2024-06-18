@@ -1,0 +1,51 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+
+<html dir="ltr" lang="es">
+    
+    <head>
+    
+        <title>{% block title %}{% endblock %} | Project System</title>
+        <!-- Select2 -->
+
+        {% block extra_css %}{% endblock extra_css %}
+    </head>
+    <body>
+        
+        
+        <!-- ===============================================-->
+        <!--    Main Content-->
+        <!-- ===============================================-->
+        <main class="main" id="top">
+            <div class="container-fluid" data-layout="container">
+
+              
+                
+                <div class="content">
+
+
+                    
+                    <!-- Dinamic content -->
+                    {% block content %} 
+                        {% block heading %}
+                        {% endblock %}
+                    {% endblock content%}                 
+                    <!--End Dinamic content-->
+
+                </div>                
+            </div>            
+        </main>
+        <!-- ===============================================-->
+        <!--    End of Main Content-->
+        <!-- ===============================================-->
+
+        
+        {% include 'core/include/js.html' %}
+
+        {% block extra_js %}
+
+        {% endblock extra_js %}
+    </body>
+
+</html>

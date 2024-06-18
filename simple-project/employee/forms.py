@@ -1,5 +1,5 @@
 from django import forms
-from models import Employee, STATUS_TYPES
+from .models import Employee, STATUS_TYPES
 
 class EmployeeForm(forms.ModelForm):
     class Meta:

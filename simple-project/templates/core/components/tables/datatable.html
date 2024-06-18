@@ -1,0 +1,55 @@
+<div class="container py-4">
+    <!-- start page title -->
+    <div class = "col-lg-6 col-xl-12 col-xxl-6 h-100">
+        <!-- Titulo del formulario wizard -->
+        {% if name %}
+        <div class="d-flex mb-4">
+            <span class="fa-stack me-2 ms-n1">
+                <i class="fas fa-circle fa-stack-2x text-300"></i>
+                <i class="fa-inverse fa-stack-1x text-primary fas fa-boxes"></i>
+            </span>
+            <div class="col">
+                <h5 class="mb-0 text-primary position-relative"><span class="bg-200 dark__bg-1100 pe-3">{{name}}</span>
+                    <span class="border position-absolute top-50 translate-middle-y w-100 start-0 z-index--1"></span>
+                </h5>
+                <p class="mb-0">Aquí puede vizualizar todos los {{name}}</p>          
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-lg-12 col-xl-12 col-xxl-12 h-100">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body p-3"> 
+                        {% if urls %}
+                            {% if urls.0.id == 'rental_create'%}
+                            {% comment %} caso particular de renta porque el create recibe un id {% endcomment %}
+                                <div id="{{ urls.0.id }}" data-url="{% url urls.0.name 0%}"></div>    
+                            {% else %}
+                                <div id="{{ urls.0.id }}" data-url="{% url urls.0.name %}"></div>
+                            {% endif %}
+                            {% for url in urls|slice:"1:" %} <!-- Funcion para omitir el primer elemento de la lista-->
+                                <div id="{{ url.id }}" data-url="{% url url.name 0%}"></div>
+                            {% endfor %}
+                        {% endif %}
+                        <table id={{tableId}} data-url={{url}} class="table table-sm fs--1 mb-0 overflow-hidden" style="width:100%">
+                            <thead class="bg-200 text-900">
+                                <tr>
+                                    {% for column in columns%}
+                                        <th class="text-nowrap">{{column}}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody class="overflow-hidden">
+                                <!-- Autocomplete with dates -->
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+
