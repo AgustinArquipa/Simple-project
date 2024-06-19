@@ -18,5 +18,10 @@ urlpatterns = [
         "list-datatable/",
         EmployeeAjaxView,
         name="employee_datatable"
+    ),
+    path(
+        "list-context/",
+        employee_list_view,
+        name="employee_list_code"
     )
 ]

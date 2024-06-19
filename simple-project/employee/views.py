@@ -27,6 +27,18 @@ def employee_list(request):
 
     return render(request, 'employee/employee_list.html', context)
 
+def employee_list_view(request):
+    # Devolvemos los datos atraves de un contexto
+    columns = getColumnsForModel(Employee)
+    data = Employee.objects.all()
+    context = {
+        'columns': columns,
+        'employee': data,
+        'url_datatable': reverse("employee_app:employee_datatable"),
+        'datos_context': 1
+    }
+    return render(request, 'employee/employee_list.html', context)
+
 def EmployeeAjaxView(request):
     draw = request.GET.get('draw')
     start = int(request.GET.get('start', 0))
@@ -81,6 +93,7 @@ def EmployeeAjaxView(request):
         item.to_json()
         for item in filtered_data[start: start+length]
     ]
+    
 
     return JsonResponse(
         {

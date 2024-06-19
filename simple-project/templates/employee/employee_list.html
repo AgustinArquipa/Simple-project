@@ -1,5 +1,6 @@
 {% extends "core/base.html" %}
 {% load static %}
+{% load employee_tags %}
 
 {% block extra_css %}
     <!-- Datatatables -->
@@ -21,8 +22,11 @@ Lista de Empleados
     {% csrf_token %}
 
     <!-- Incluyendo datatable generico -->
-    {% include "core/components/tables/datatable.html" with tableId="tableEmployee" name="Empleados" columns=columns url=url_datatable %}
-
+    {% if datos_context %}
+        {% include "core/components/tables/table.html" with columns=columns employees=employee %}
+    {% else %}
+        {% include "core/components/tables/datatable.html" with tableId="tableEmployee" name="Empleados" columns=columns url=url_datatable %}
+    {% endif %}
 
 </div>
 {% endblock content %}
