@@ -20,6 +20,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
+                    <div class="card-header">
+                        <a href="{% url 'employee_app:create_employee' %}" class="btn btn-primary">Crear nuevo datos</a>
+                    </div>
                     <div class="card-body p-3">
                         <table id="employeeTable" class="table table-sm fs--1 mb-0 overflow-hidden table-bordered" style="width:100%">
                             <thead class="bg-200 text-900">
@@ -31,7 +34,7 @@
                             </thead>
                             <tbody class="overflow-hidden">
                                 {% for employee in employee %}
-                                    <tr>
+                                    <tr class="{{ employee.get_status_class }}">
                                         <td>{{ employee.id }}</td>
                                         <td>{{ employee.full_name }}</td>
                                         <td>{{ employee.dni }}</td>

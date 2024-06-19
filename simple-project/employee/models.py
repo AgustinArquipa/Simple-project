@@ -84,6 +84,16 @@ class Employee(models.Model):
     class Meta:
         db_table = "Empleado"
 
+    def get_status_class(self):
+        if self.status == "Monotributo":
+            return 'bg-orange'
+        elif self.status == "Planta":
+            return 'bg-success'
+        elif self.status == "Contratado":
+            return 'bg-info'
+        else:
+            return 'bg-light'
+
     def __str__(self) -> str:
         cad = f"Nombre Completo: {self.full_name}"
         cad += f"\nDNI: {self.dni}"
