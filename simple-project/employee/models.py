@@ -5,7 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 STATUS_TYPES = [
     ('Monotributo', 'Monotributo'),
     ('Planta', 'Planta'),
-    ('Planta Trans.', 'Planta Trans'),
+    ('Planta Temporal.', 'Planta Temporal'),
     ('Contratado', 'Contratado')
 ]
 
@@ -49,37 +49,37 @@ class Employee(models.Model):
         null=True,
         blank=True
     )
-    box = models.CharField(
-        verbose_name="Taquilla",
-        max_length=15,
-        null=True,
-        blank=True
-    )
-    asset_number = models.CharField(
-        verbose_name="N° Patrimonial",
-        max_length=100,
-        null=True,
-        blank=True
-    )
-    unit = models.PositiveIntegerField(
-        verbose_name="Cantidad Unitaria",
-        null=True,
-        blank=True,
-        default=1,
-        validators=[MinValueValidator(1), MaxValueValidator(50)],
-    )
-    location = models.CharField(
-        verbose_name="Ubicacion",
-        max_length=50,
-        blank=True,
-        null=True
-    )
-    code = models.CharField(
-        max_length=30,
-        verbose_name="Codigo",
-        null=True,
-        blank=True
-    )
+    # box = models.CharField(
+    #     verbose_name="Taquilla",
+    #     max_length=15,
+    #     null=True,
+    #     blank=True
+    # )
+    # asset_number = models.CharField(
+    #     verbose_name="N° Patrimonial",
+    #     max_length=100,
+    #     null=True,
+    #     blank=True
+    # )
+    # unit = models.PositiveIntegerField(
+    #     verbose_name="Cantidad Unitaria",
+    #     null=True,
+    #     blank=True,
+    #     default=1,
+    #     validators=[MinValueValidator(1), MaxValueValidator(50)],
+    # )
+    # location = models.CharField(
+    #     verbose_name="Ubicacion",
+    #     max_length=50,
+    #     blank=True,
+    #     null=True
+    # )
+    # code = models.CharField(
+    #     max_length=30,
+    #     verbose_name="Codigo",
+    #     null=True,
+    #     blank=True
+    # )
 
     class Meta:
         db_table = "Empleado"
@@ -93,19 +93,12 @@ class Employee(models.Model):
             return 'bg-info'
         else:
             return 'bg-light'
+        
+    def get_full_name(self) -> str:
+        return self.full_name
 
     def __str__(self) -> str:
-        cad = f"Nombre Completo: {self.full_name}"
-        cad += f"\nDNI: {self.dni}"
-        cad += f"\nAgrupamiento: {self.gruoping}"
-        cad += f"\nDireccion: {self.address}"
-        cad += f"\nServicio: {self.service}"
-        cad += f"\nSituacion Laboral: {self.status}"
-        cad += f"\nTaquilla: {self.box}"
-        cad += f"\nN° Patrimonial: {self.asset_number}"
-        cad += f"\nCantidad Unitaria: {self.unit}"
-        cad += f"\nUbicacion: {self.location}"
-        cad += f"\nCódigo: {self.code}"
+        cad = f"{self.full_name} - {self.dni}"
         return cad
 
     def to_json(self):
@@ -116,9 +109,4 @@ class Employee(models.Model):
         item['address'] = self.address
         item['service'] = self.service
         item['status'] = self.status
-        item['box'] = self.box
-        item['asset_number'] = self.asset_number
-        item['unit'] = str(self.unit)
-        item['location'] = self.location
-        item['code'] = self.code
         return item
