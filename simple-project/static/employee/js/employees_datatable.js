@@ -32,17 +32,13 @@ function initializeDataTable() {
         },
         // Definimos las columnas de la tabla
         columns: [ 
-            { data: 'full_name', title: "Apellido" },
-            { data: 'dni', title: "Nombre" },
-            { data: 'grouping', title: "DNI" },
-            { data: 'address', title: "Dirección" },
-            { data: 'service', title: "E-mail" },
-            { data: 'status', title: "Puesto" },  
-            { data: 'box' },
-            { data: 'asset_number' },
-            { data: 'unit' },
-            { data: 'location' },
-            { data: 'code' }
+            { data: 'id' },
+            { data: 'full_name' },
+            { data: 'dni' },
+            { data: 'grouping' },
+            { data: 'address' },
+            { data: 'service' },
+            { data: 'status' }
         ],
         // Configuración del idioma y mensajes
         language: {

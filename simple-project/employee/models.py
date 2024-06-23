@@ -84,15 +84,15 @@ class Employee(models.Model):
     class Meta:
         db_table = "Empleado"
 
-    def get_status_class(self):
-        if self.status == "Monotributo":
-            return 'bg-orange'
-        elif self.status == "Planta":
-            return 'bg-success'
-        elif self.status == "Contratado":
-            return 'bg-info'
-        else:
-            return 'bg-light'
+    # def get_status_class(self):
+    #     if self.status == "Monotributo":
+    #         return 'bg-orange'
+    #     elif self.status == "Planta":
+    #         return 'bg-success'
+    #     elif self.status == "Contratado":
+    #         return 'bg-info'
+    #     else:
+    #         return 'bg-light'
         
     def get_full_name(self) -> str:
         return self.full_name
@@ -103,6 +103,7 @@ class Employee(models.Model):
 
     def to_json(self):
         item = {}
+        item['id'] = self.id
         item['full_name'] = self.full_name
         item['dni'] = self.dni
         item['grouping'] = self.gruoping

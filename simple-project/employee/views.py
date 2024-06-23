@@ -20,6 +20,8 @@ def create_employee(request):
 
 def employee_list(request):
 
+    print(getColumnsForModel(Employee))
+
     context = {
         'columns': getColumnsForModel(Employee),
         'url_datatable': reverse("employee_app:employee_datatable")
@@ -49,19 +51,15 @@ def EmployeeAjaxView(request):
 
     # Mapeo de indices de columnas 
     column_mapping = {
-        0: 'full_name',
-        1: 'dni',
-        2: 'gruoping',
-        3: 'service',
-        4: 'status',
-        5: 'box', 
-        6: 'asset_number',
-        7: 'unit',
-        8: 'location', 
-        9: 'code'
+        0: 'id',
+        1: 'full_name',
+        2: 'dni',
+        3: 'gruoping',
+        4: 'service',
+        5: 'status'
     }
 
-    order_column = column_mapping.get(order_column_index, 'full_name')
+    order_column = column_mapping.get(order_column_index, 'id')
     if order_direction == 'asc':
         order_column = F(order_column).asc(nulls_last=True)
     else:
@@ -71,7 +69,7 @@ def EmployeeAjaxView(request):
     conditions = Q()
     if search_value:
         fields = [
-            'dni', 'full_name', 'status', 'box', 'asset_number', 'code', 'grouping'
+            'dni', 'full_name', 'status', 'gruoping', 'id'
         ]
 
         search_terms = search_value.split()
