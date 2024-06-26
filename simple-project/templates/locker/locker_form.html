@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee | Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="m-0">Crear Empleado</h4>
+        </div>
+        <div class="card-body">
+            <form id="form_locker" method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="col-form-legend col-sm-1-12">Datos Básicos</legend>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="id_full_name">Numero de Taquilla</label>
+                            {{ form.number_locker }}
+                            {{ form.number_locker.errors }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_dni">Estado de Taquilla</label>
+                            {{ form.status_locker }}
+                            {{ form.status_locker.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="id_grouping">Empleado</label>
+                            {{ form.employee }}
+                            {{ form.employee.errors }}
+                        </div>
+                </fieldset>
+            </form>
+            <div id="footer-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button onclick="window.history.back()" class="btn btn-primary me-md-2">
+                    <i class="fas fa-backspace"></i>Volver
+                </button>
+                <button form="form_locker" type="submit" class="btn btn-success" data-toggle="modal" data-target="#confirmEmployee">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

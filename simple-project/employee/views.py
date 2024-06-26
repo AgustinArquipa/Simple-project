@@ -20,8 +20,6 @@ def create_employee(request):
 
 def employee_list(request):
 
-    print(getColumnsForModel(Employee))
-
     urls = [
         {'id':'employee_add', 'name':'employee_app:create_employee'},
     ]

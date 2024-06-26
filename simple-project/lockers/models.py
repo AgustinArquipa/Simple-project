@@ -41,3 +41,11 @@ class Locker(models.Model):
 
     def __str__(self) -> str:
         cad = f"{self.get_status_short}-{self.number_locker} - Empleado: {self.employee.get_full_name()}" # Falta indicar que empleado tiene asociado
+
+    def to_json(self):
+        item = {}
+        item['id'] = self.id
+        item['number_locker'] = self.number_locker
+        item['status_locker'] = self.status_locker
+        item['employee'] = self.employee.get_full_name()
+        return item
