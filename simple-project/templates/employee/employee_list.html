@@ -25,7 +25,7 @@ Lista de Empleados
     {% if datos_context %}
         {% include "core/components/tables/table.html" with columns=columns employees=employee %}
     {% else %}
-        {% include "core/components/tables/datatable.html" with tableId="tableEmployee" name="Empleados" columns=columns url=url_datatable %}
+        {% include "core/components/tables/datatable.html" with tableId="tableEmployee" name="Empleados" columns=columns url=url_datatable urls=urls %}
     {% endif %}
 
 </div>

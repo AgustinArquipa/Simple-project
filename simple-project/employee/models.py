@@ -5,7 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 STATUS_TYPES = [
     ('Monotributo', 'Monotributo'),
     ('Planta', 'Planta'),
-    ('Planta Temporal.', 'Planta Temporal'),
+    ('Planta Temporal', 'Planta Temporal'),
     ('Contratado', 'Contratado')
 ]
 

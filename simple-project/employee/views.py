@@ -22,9 +22,14 @@ def employee_list(request):
 
     print(getColumnsForModel(Employee))
 
+    urls = [
+        {'id':'employee_add', 'name':'employee_app:create_employee'},
+    ]
+
     context = {
         'columns': getColumnsForModel(Employee),
-        'url_datatable': reverse("employee_app:employee_datatable")
+        'url_datatable': reverse("employee_app:employee_datatable"),
+        'urls': urls
     }
 
     return render(request, 'employee/employee_list.html', context)

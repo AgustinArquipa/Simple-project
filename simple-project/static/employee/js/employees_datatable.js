@@ -22,6 +22,34 @@ function initializeDataTable() {
 
     // Inicializamos el datatable
     let datatable = $('#tableEmployee').DataTable({
+        layout: {
+            top2start: function() {
+                let toolbar = document.createElement('div')
+                toolbar.innerHTML = `
+                <div>
+                    <a href="${$('#employee_add').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
+                        <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
+                        <span class="d-none d-sm-inline-block ms-1">Nuevo Empleado</span>
+                    </a>
+                </div>`;
+                return toolbar
+            },
+            topStart: {
+                pageLength: {
+                    menu: [5, 10, 15, 20]
+                }
+            },
+            topEnd: {
+                search: {
+                    placeholder: "Buscar ..."
+                }
+            },
+            bottomEnd: {
+                paging : {
+                    numbers: 3
+                }
+            }
+        },
         responsive: true,
         // Configuración para el procesamiento de datos
         processing: true,

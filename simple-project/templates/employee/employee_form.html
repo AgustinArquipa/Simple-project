@@ -7,13 +7,60 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Crear Datos</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="m-0">Crear Empleado</h4>
+        </div>
+        <div class="card-body">
+            <form id="form_employee" method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="col-form-legend col-sm-1-12">Datos Básicos</legend>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="id_full_name">Nombre Completo</label>
+                            {{ form.full_name }}
+                            {{ form.full_name.errors }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_dni">Documento de Identidad</label>
+                            {{ form.dni }}
+                            {{ form.dni.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="id_grouping">Grupo Perteneciente</label>
+                            {{ form.gruoping }}
+                            {{ form.gruoping.errors }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_address">Direccíon</label>
+                            {{ form.address }}
+                            {{ form.address.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="id_service">Servicío</label>
+                            {{ form.service }}
+                            {{ form.service.errors }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_status">Estado</label>
+                            {{ form.status }}
+                            {{ form.status.errors }}
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <div id="footer-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button onclick="window.history.back()" class="btn btn-primary me-md-2">
+                    <i class="fas fa-backspace"></i>Volver
+                </button>
+                <button form="form_employee" type="submit" class="btn btn-success" data-toggle="modal" data-target="#confirmEmployee">Confirmar</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -33,19 +33,20 @@
                                 <div id="{{ url.id }}" data-url="{% url url.name 0%}"></div>
                             {% endfor %}
                         {% endif %}
-                        <table id={{tableId}} data-url={{url}} class="table table-sm fs--1 mb-0 overflow-hidden" style="width:100%">
-                            <thead class="bg-200 text-900">
-                                <tr>
-                                    {% for column in columns%}
-                                        <th class="text-nowrap">{{column}}</th>
-                                    {% endfor %}
-                                </tr>
-                            </thead>
-                            <tbody class="overflow-hidden">
-                                <!-- Autocomplete with dates -->
-                            </tbody>
-                        </table>
-                        
+                        <div class="table-responsive">
+                            <table id={{tableId}} data-url={{url}} class="table table-striped table-borderless" style="width:100%">
+                                <thead class="bg-200 text-900 table-dark">
+                                    <tr>
+                                        {% for column in columns%}
+                                            <th class="text-nowrap">{{column}}</th>
+                                        {% endfor %}
+                                    </tr>
+                                </thead>
+                                <tbody class="overflow-hidden">
+                                    <!-- Autocomplete with dates -->
+                                </tbody>
+                            </table>    
+                        </div>
                     </div>
                 </div>
             </div>
