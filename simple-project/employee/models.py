@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from .manangers import EmployeeMananger
 
 # Create your models here.
 STATUS_TYPES = [
@@ -49,6 +50,15 @@ class Employee(models.Model):
         null=True,
         blank=True
     )
+    # Este nuevo campo nos va a servir para saber si un empleado tiene asiganada un casillero o mas
+    condition = models.CharField(
+        verbose_name="Tiene Taquilla?",
+        null=True,
+        blank=True,
+        default="N/A" # -> Este estado quiere decir que esta libre de taquilla
+    )
+
+    objects = EmployeeMananger()
     # box = models.CharField(
     #     verbose_name="Taquilla",
     #     max_length=15,
@@ -110,4 +120,5 @@ class Employee(models.Model):
         item['address'] = self.address
         item['service'] = self.service
         item['status'] = self.status
+        item['condition'] = self.condition
         return item

@@ -34,6 +34,19 @@
                             {{ form.employee }}
                             {{ form.employee.errors }}
                         </div>
+                        {% if employee_count && patrimony_count %}
+                            <div class="col-md-6">
+                                <label for="id_patimony">Patrimonio</label>
+                                {{ form.patrimony }}
+                                {{ form.patrimony.errors }}
+                            </div>
+                        {% else %}
+                            <div class="col-md-6">
+                                <label for="id_patrimony">Patrimonio</label>
+                                <input type="text" name="patrimony" id="id_patrimony" class="form-control" disabled placeholder="No tiene cargado datos de Emplado y de Patrimonio">
+                                {{ form.patrimony.errors }}
+                            </div>
+                        {% elif %}
                 </fieldset>
             </form>
             <div id="footer-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">

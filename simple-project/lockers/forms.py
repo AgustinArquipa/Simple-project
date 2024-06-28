@@ -1,6 +1,7 @@
 from django import forms
 from .models import Locker, STATUS_LOCKER
 from employee.models import Employee
+from assets.models import Patrimony
 
 class LockerForm(forms.ModelForm):
     number_locker = forms.CharField(
@@ -22,8 +23,17 @@ class LockerForm(forms.ModelForm):
         )
     )
     employee = forms.ModelChoiceField(
-        required=True,
+        required=False,
         queryset=Employee.objects.all(),
+        widget=forms.Select(
+            attrs={
+                'class': 'form-control'
+            }
+        )
+    )
+    patrimony = forms.ModelChoiceField(
+        required=True,
+        queryset=Patrimony.objects.all(),
         widget=forms.Select(
             attrs={
                 'class': 'form-control'

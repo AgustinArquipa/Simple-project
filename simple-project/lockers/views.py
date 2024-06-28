@@ -8,6 +8,9 @@ from django.db.models import Q, F
 
 # Create your views here.
 def create_locker(request):
+    from employee.models import Employee
+    from assets.models import Patrimony
+
     if request.method == "POST":
         form = LockerForm(request.POST)
         if form.is_valid():
@@ -17,7 +20,9 @@ def create_locker(request):
         form = LockerForm()
 
     context = {
-        'form': form
+        'form': form,
+        'employee_count': Employee.objects.get_employee_already(),
+        'patrimony_count': Patrimony.objects.get_patrimony_already()
     }
 
     return render(request, 'locker/locker_form.html', context)
@@ -26,7 +31,8 @@ def create_locker(request):
 def locker_list(request):
 
     urls = [
-        {'id': 'locker_add', 'name': 'locker_app:locker_create'}
+        {'id': 'locker_add', 'name': 'locker_app:locker_create'},
+        {'id': 'employee_list', 'name': 'employee_app:list'}
     ]
     
     context = {

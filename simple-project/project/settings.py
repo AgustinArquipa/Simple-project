@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'core',
     'employee',
     'lockers',
+    'assets',
 ]
 
 MIDDLEWARE = [

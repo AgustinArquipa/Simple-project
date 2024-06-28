@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 STATUS_LOCKER = [
     ('Reservado', 'Reservado'),
-    ('Ocupado', 'Ocupado')
+    ('Ocupado', 'Ocupado'),
+    ('Libre', 'Libre')
 ]
 
 class Locker(models.Model):
@@ -20,12 +21,21 @@ class Locker(models.Model):
         null=True,
         blank=True
     )
-
     employee = models.ForeignKey(
         'employee.Employee',
         on_delete=models.CASCADE,
         related_name="lockers",
-        verbose_name="Empleado"
+        verbose_name="Empleado",
+        null=True,
+        blank=True
+    )
+    patrimony = models.ForeignKey(
+        'assets.Patrimony',
+        on_delete=models.PROTECT,
+        related_name="assets",
+        verbose_name="Patrimonio",
+        null=True,
+        blank=True
     )
 
     class Meta:
@@ -37,7 +47,10 @@ class Locker(models.Model):
         elif self.status_locker == "Ocupado":
             return 'O'
         else:
-            return 'N/A'
+            return 'L'
+
+    def get_sticker(self) -> str:
+        return f"{self.get_status_short + self.number_locker}"
 
     def __str__(self) -> str:
         cad = f"{self.get_status_short}-{self.number_locker} - Empleado: {self.employee.get_full_name()}" # Falta indicar que empleado tiene asociado
