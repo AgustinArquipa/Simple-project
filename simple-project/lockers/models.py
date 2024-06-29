@@ -50,16 +50,17 @@ class Locker(models.Model):
             return 'L'
 
     def get_sticker(self) -> str:
-        return f"{self.get_status_short + self.number_locker}"
+        return f"{self.get_status_short() + self.number_locker}"
 
     def __str__(self) -> str:
-        cad = f"{self.get_status_short}-{self.number_locker} - Empleado: {self.employee.get_full_name()}" # Falta indicar que empleado tiene asociado
-
+        cad = f"{self.get_status_short()}-{self.number_locker} - Empleado: {self.employee.get_full_name()}" # Falta indicar que empleado tiene asociado
+        return cad
+    
     def to_json(self):
         item = {}
         item['id'] = self.id
         item['number_locker'] = self.number_locker
         item['status_locker'] = self.status_locker
-        item['employee'] = self.employee.get_full_name()
-        item['patimony'] = self.patrimony.number_patrimony
+        item['employee'] = self.employee.get_full_name() if self.employee else "Sin Empleado Asignado."
+        item['patrimony'] = self.patrimony.number_patrimony
         return item

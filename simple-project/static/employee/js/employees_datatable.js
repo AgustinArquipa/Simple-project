@@ -1,4 +1,3 @@
-let employeeID;
 let table;
 
 $(document).ready(function() {
@@ -34,6 +33,10 @@ function initializeDataTable() {
                     <a href="${$('#lockers').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
                         <span class="fa-solid fa-list" data-fa-transform="shrink-3 down-2"></span>
                         <span class="d-none d-sm-inline-block ms-1">Lista de Casilleros</span>
+                    </a>
+                    <a href="${$('#patrimonies').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
+                        <span class="fa-solid fa-list" data-fa-transform="shrink-3 down-2"></span>
+                        <span class="d-none d-sm-inline-block ms-1">Lista de Patrimonios</span>
                     </a>
                 </div>`;
                 return toolbar
@@ -94,7 +97,15 @@ function initializeDataTable() {
                 targets: 6,
                 orderable: false
             }
-        ] 
+        ],
+         // Aplicar estilos de fila según la condición
+        createdRow: function(row, data, dataIndex) {
+            if (data.condition === 'Ocupado') {
+                $(row).css('background-color', '#add8e6');
+            } else if (data.condition === 'Reservado') {
+                $(row).css('background-color', '#fffacd');
+            }
+        }
     });
 
     return datatable;

@@ -33,6 +33,7 @@ class Patrimony(models.Model):
         
     def to_json(self):
         item = {}
+        item['id'] = self.id
         item['number_patrimony'] = self.number_patrimony
         item['location'] = self.location
         item['lockers'] = [locker.get_sticker() for locker in self.get_lockers()]

@@ -14,6 +14,15 @@ def create_locker(request):
     if request.method == "POST":
         form = LockerForm(request.POST)
         if form.is_valid():
+            locker = form.save(commit=False) # Creamos una instancia del casillero
+            employee = locker.employee
+            # Y ahora cambiamos la condicion del empleado
+            if locker.status_locker == "Reservado":
+                employee.condition = "Reservado"
+            elif locker.status_locker == "Ocupado":
+                employee.condition = "Ocupado"
+            # Guardamos las instancias 
+            employee.save()
             form.save()
             return redirect('locker_app:list_locker')
     else:
@@ -32,7 +41,8 @@ def locker_list(request):
 
     urls = [
         {'id': 'locker_add', 'name': 'locker_app:locker_create'},
-        {'id': 'employee_list', 'name': 'employee_app:list'}
+        {'id': 'employee_list', 'name': 'employee_app:list'},
+        {'id': 'patrimonies', 'name': 'assets_app:list_patrimony'}
     ]
     
     context = {

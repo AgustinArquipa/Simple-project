@@ -16,30 +16,29 @@ $(document).ready(function() {
 
 // Función para inicializar el datatable 
 function initializeDataTable() {
-    let table = document.getElementById("tableLocker")
+    let table = document.getElementById("tablePatrimony")
     let url = table.getAttribute("data-url")
 
     // Inicializamos el datatable
-    let datatable = $('#tableLocker').DataTable({
+    let datatable = $('#tablePatrimony').DataTable({
         layout: {
             top2start: function() {
                 let toolbar = document.createElement('div')
                 toolbar.innerHTML = `
                 <div>
-                    <a href="${$('#locker_add').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
+                    <a href="${$('#patrimony_add').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
                         <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
-                        <span class="d-none d-sm-inline-block ms-1">Nuevo Casillero</span>
+                        <span class="d-none d-sm-inline-block ms-1">Nuevo Patrimonio</span>
                     </a>
-                    <a href="${$('#employee_list').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
+                    <a href="${$('#employees').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
                         <span class="fa-solid fa-list" data-fa-transform="shrink-3 down-2"></span>
                         <span class="d-none d-sm-inline-block ms-1">Lista de Empleados</span>
                     </a>
-                    <a href="${$('#patrimonies').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
+                    <a href="${$('#lockers').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
                         <span class="fa-solid fa-list" data-fa-transform="shrink-3 down-2"></span>
-                        <span class="d-none d-sm-inline-block ms-1">Lista de Patrimonios</span>
+                        <span class="d-none d-sm-inline-block ms-1">Lista de Casilleros</span>
                     </a>
                 </div>`;
-
                 return toolbar
             },
             topStart: {
@@ -68,10 +67,15 @@ function initializeDataTable() {
         },
         // Definimos las columnas de la tabla
         columns: [ 
-            { data: 'number_locker' },
-            { data: 'status_locker' },
-            { data: 'employee' },
-            { data: 'patrimony'},
+            { data: 'id' },
+            { data: 'number_patrimony' },
+            { data: 'location' },
+            { 
+                data: 'lockers',
+                render: function(data, type, row) {
+                    return data.join('<br>');
+                }
+            },
         ],
         // Configuración del idioma y mensajes
         language: {
@@ -123,6 +127,6 @@ function styleDatatable(){
     $('.dt-layout-row > .dt-layout-cell.dt-full ').removeClass('dt-full').addClass('dt-start')
 
     //estilos row
-    $('#tableLocker').addClass('stripe hover');
+    $('#tablePatrimony').addClass('stripe hover');
 
 }

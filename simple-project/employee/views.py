@@ -22,7 +22,8 @@ def employee_list(request):
 
     urls = [
         {'id':'employee_add', 'name':'employee_app:create_employee'},
-        {'id': 'lockers', 'name':'locker_app:list_locker'}
+        {'id': 'lockers', 'name':'locker_app:list_locker'},
+        {'id': 'patrimonies', 'name':'assets_app:list_patrimony'}
     ]
 
     context = {

@@ -1,0 +1,46 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<!-- Liberia para los Select -->
+
+
+{% endblock extra_css %}
+
+{% block title %}Nuevo Patrimonio{% endblock %}
+
+{% block content %}
+    {% include "core/components/messages/messages.html" %}
+    <div class="card">
+        <div class="card-header">
+            <h4 class="m-0">Crear Patrimonio</h4>
+        </div>
+        <div class="card-body">
+            <form id="form_patrimony" method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="col-form-legend col-sm-1-12">Datos Básicos</legend>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="id_full_name">Numéro Patrimonial</label>
+                            {{ form.number_patrimony }}
+                            {{ form.number_patrimony.errors }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="id_dni">Ubicacíon</label>
+                            {{ form.location }}
+                            {{ form.location.errors }}
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <br>
+            <div id="footer-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button onclick="window.history.back()" class="btn btn-primary me-md-2">
+                    <i class="fas fa-backspace"></i>Volver
+                </button>
+                <button form="form_patrimony" type="submit" class="btn btn-success" data-toggle="modal" data-target="#confirmEmployee">Confirmar</button>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

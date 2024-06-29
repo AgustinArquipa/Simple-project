@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee | Project</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<!-- Liberia para los Select -->
+
+
+{% endblock extra_css %}
+
+{% block title %}Nuevo Empleado{% endblock %}
+
+{% block content %}
+
+    {% include "core/components/messages/messages.html" %}
     <div class="card">
         <div class="card-header">
             <h4 class="m-0">Crear Casillero</h4>
@@ -49,6 +54,7 @@
                         {% endif %}
                 </fieldset>
             </form>
+            <br>
             {% if patrimony_count %}
                 <div id="footer-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button onclick="window.history.back()" class="btn btn-primary me-md-2">
@@ -66,5 +72,4 @@
             {% endif %}    
         </div>
     </div>
-</body>
-</html>
+{% endblock content %}

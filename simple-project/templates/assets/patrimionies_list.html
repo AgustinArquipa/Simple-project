@@ -1,0 +1,41 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load employee_tags %}
+
+{% block extra_css %}
+    <!-- Datatatables -->
+    <link href="{% static 'libs/datatables2.0.2/css/dataTables.min.css' %}" rel="stylesheet">
+    <!-- estilo hover -->
+    <link href="{% static 'core/assets/css/datatable-custom.css' %}" rel="stylesheet">
+{% endblock extra_css %}
+
+{% block title %}
+Lista de Empleados
+{% endblock %}
+
+{% block heanding %}Lista de Patrimonios{% endblock heanding %}
+{% block content %}
+
+{% include "core/components/messages/messages.html" %}
+
+<div>
+    {% csrf_token %}
+
+    <!-- Incluyendo datatable generico -->
+    {% if datos_context %}
+        {% include "core/components/tables/table.html" with columns=columns employees=employee %}
+    {% else %}
+        {% include "core/components/tables/datatable.html" with tableId="tablePatrimony" name="Patrimonio" columns=columns url=url_datatable urls=urls %}
+    {% endif %}
+
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+    <!-- Datatables-->
+    <script src="{% static 'libs/datatables2.0.2/js/dataTables.min.js' %}"></script>
+    <!-- EXtra-->
+    <script src="{% static 'assets/js/patrimony_datatable.js' %}"></script>
+    <!-- botones de paginacion-->
+    <script src="{% static 'core/js/pagination_button_switch_class.js' %}"></script>
+{% endblock extra_js %}
