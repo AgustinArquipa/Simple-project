@@ -55,7 +55,8 @@ def LockerAjaxView(request):
     column_mapping = {
         0: 'number_locker',
         1: 'status_locker',
-        2: 'employee'
+        2: 'employee',
+        3: 'patrimony'
     }
 
     order_column = column_mapping.get(order_column_index, 'number_locker')
@@ -68,7 +69,7 @@ def LockerAjaxView(request):
     conditions = Q()
     if search_value:
         fields = [
-            'number_locker', 'status_locker', 'employee__full_name'
+            'number_locker', 'status_locker', 'employee__full_name', 'patrimony__number_patrimony'
         ]
 
         search_terms = search_value.split()

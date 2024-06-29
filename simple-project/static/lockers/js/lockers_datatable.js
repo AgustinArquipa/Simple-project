@@ -30,7 +30,12 @@ function initializeDataTable() {
                         <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
                         <span class="d-none d-sm-inline-block ms-1">Nuevo Casillero</span>
                     </a>
+                    <a href="${$('#employee_list').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
+                        <span class="fa-solid fa-list" data-fa-transform="shrink-3 down-2"></span>
+                        <span class="d-none d-sm-inline-block ms-1">Lista de Empleados</span>
+                    </a>
                 </div>`;
+
                 return toolbar
             },
             topStart: {
@@ -61,7 +66,8 @@ function initializeDataTable() {
         columns: [ 
             { data: 'number_locker' },
             { data: 'status_locker' },
-            { data: 'employee' }
+            { data: 'employee' },
+            { data: 'patrimony'},
         ],
         // Configuración del idioma y mensajes
         language: {
@@ -82,7 +88,7 @@ function initializeDataTable() {
         autoWidth: false,
         columnDefs:[
             {
-                targets: 2,
+                targets: 4,
                 orderable: false
             }
         ] 

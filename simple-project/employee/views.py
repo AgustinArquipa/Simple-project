@@ -22,6 +22,7 @@ def employee_list(request):
 
     urls = [
         {'id':'employee_add', 'name':'employee_app:create_employee'},
+        {'id': 'lockers', 'name':'locker_app:list_locker'}
     ]
 
     context = {
@@ -59,7 +60,8 @@ def EmployeeAjaxView(request):
         2: 'dni',
         3: 'gruoping',
         4: 'service',
-        5: 'status'
+        5: 'status',
+        6: 'condition'
     }
 
     order_column = column_mapping.get(order_column_index, 'id')
@@ -72,7 +74,7 @@ def EmployeeAjaxView(request):
     conditions = Q()
     if search_value:
         fields = [
-            'dni', 'full_name', 'status', 'gruoping', 'id'
+            'dni', 'full_name', 'status', 'gruoping', 'id', 'condition', 'service'
         ]
 
         search_terms = search_value.split()

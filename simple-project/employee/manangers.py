@@ -7,4 +7,4 @@ class EmployeeMananger(models.Manager):
         Lo que trato de hacer con este metodo es que me devuelva si existe mas de un empleado en la BD
         return -> Devuelve V o F segun la consulta a la BD de Employee
         """
-        return self.count > 1
+        return self.count() > 1

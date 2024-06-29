@@ -61,4 +61,5 @@ class Locker(models.Model):
         item['number_locker'] = self.number_locker
         item['status_locker'] = self.status_locker
         item['employee'] = self.employee.get_full_name()
+        item['patimony'] = self.patrimony.number_patrimony
         return item

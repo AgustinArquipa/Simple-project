@@ -31,6 +31,10 @@ function initializeDataTable() {
                         <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
                         <span class="d-none d-sm-inline-block ms-1">Nuevo Empleado</span>
                     </a>
+                    <a href="${$('#lockers').data('url')}" class="btn btn-info btn-sm me-1 my-2" type="button">
+                        <span class="fa-solid fa-list" data-fa-transform="shrink-3 down-2"></span>
+                        <span class="d-none d-sm-inline-block ms-1">Lista de Casilleros</span>
+                    </a>
                 </div>`;
                 return toolbar
             },
@@ -64,9 +68,9 @@ function initializeDataTable() {
             { data: 'full_name' },
             { data: 'dni' },
             { data: 'grouping' },
-            { data: 'address' },
             { data: 'service' },
-            { data: 'status' }
+            { data: 'status' },
+            { data: 'condition'},
         ],
         // Configuración del idioma y mensajes
         language: {

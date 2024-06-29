@@ -30,7 +30,7 @@
                                 <div id="{{ urls.0.id }}" data-url="{% url urls.0.name %}"></div>
                             {% endif %}
                             {% for url in urls|slice:"1:" %} <!-- Funcion para omitir el primer elemento de la lista-->
-                                <div id="{{ url.id }}" data-url="{% url url.name 0%}"></div>
+                                <div id="{{ url.id }}" data-url="{% url url.name %}"></div>
                             {% endfor %}
                         {% endif %}
                         <div class="table-responsive">

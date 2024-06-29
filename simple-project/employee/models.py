@@ -31,12 +31,6 @@ class Employee(models.Model):
         null=True,
         blank=True
     )
-    address = models.CharField(
-        max_length=100,
-        verbose_name="Direccion",
-        null=True,
-        blank=True
-    )
     service = models.CharField(
         max_length=100,
         verbose_name="Servicio",
@@ -117,7 +111,6 @@ class Employee(models.Model):
         item['full_name'] = self.full_name
         item['dni'] = self.dni
         item['grouping'] = self.gruoping
-        item['address'] = self.address
         item['service'] = self.service
         item['status'] = self.status
         item['condition'] = self.condition

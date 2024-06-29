@@ -9,7 +9,7 @@
 <body>
     <div class="card">
         <div class="card-header">
-            <h4 class="m-0">Crear Empleado</h4>
+            <h4 class="m-0">Crear Casillero</h4>
         </div>
         <div class="card-body">
             <form id="form_locker" method="POST">
@@ -34,7 +34,7 @@
                             {{ form.employee }}
                             {{ form.employee.errors }}
                         </div>
-                        {% if employee_count && patrimony_count %}
+                        {% if employee_count and patrimony_count %}
                             <div class="col-md-6">
                                 <label for="id_patimony">Patrimonio</label>
                                 {{ form.patrimony }}
@@ -46,15 +46,24 @@
                                 <input type="text" name="patrimony" id="id_patrimony" class="form-control" disabled placeholder="No tiene cargado datos de Emplado y de Patrimonio">
                                 {{ form.patrimony.errors }}
                             </div>
-                        {% elif %}
+                        {% endif %}
                 </fieldset>
             </form>
-            <div id="footer-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button onclick="window.history.back()" class="btn btn-primary me-md-2">
-                    <i class="fas fa-backspace"></i>Volver
-                </button>
-                <button form="form_locker" type="submit" class="btn btn-success" data-toggle="modal" data-target="#confirmEmployee">Confirmar</button>
-            </div>
+            {% if patrimony_count %}
+                <div id="footer-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button onclick="window.history.back()" class="btn btn-primary me-md-2">
+                        <i class="fas fa-backspace"></i>Volver
+                    </button>
+                    <button form="form_locker" type="submit" class="btn btn-success" data-toggle="modal" data-target="#confirmEmployee">Confirmar</button>
+                </div>
+            {% else %}
+                <div id="footer-buttons" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button onclick="window.history.back()" class="btn btn-primary me-md-2">
+                        <i class="fas fa-backspace"></i>Volver
+                    </button>
+                    <button disabled form="form_locker" type="submit" class="btn btn-success" data-toggle="modal" data-target="#confirmEmployee">Confirmar</button>
+                </div>
+            {% endif %}    
         </div>
     </div>
 </body>
