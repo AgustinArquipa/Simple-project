@@ -41,6 +41,7 @@ class Patrimony(models.Model):
         item = {}
         item['id'] = self.id
         item['number_patrimony'] = self.number_patrimony
+        item['code'] = self.code
         item['location'] = self.location
         item['lockers'] = [locker.get_sticker() for locker in self.get_lockers()]
         return item

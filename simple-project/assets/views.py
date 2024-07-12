@@ -50,7 +50,8 @@ def PatrimonyAjaxView(request):
     column_mapping = {
         0: 'id',
         1: 'number_patrimony',
-        2: 'location'
+        2: 'code',
+        3: 'location'
     }
 
     order_column = column_mapping.get(order_column_index, 'id')
@@ -63,7 +64,7 @@ def PatrimonyAjaxView(request):
     conditions = Q()
     if search_value:
         fields = [
-            'id', 'number_patrimony', 'location'
+            'id', 'number_patrimony', 'location', 'code'
         ]
 
         search_terms = search_value.split()

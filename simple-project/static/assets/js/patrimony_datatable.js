@@ -69,6 +69,7 @@ function initializeDataTable() {
         columns: [ 
             { data: 'id' },
             { data: 'number_patrimony' },
+            { data: 'code' },
             { data: 'location' },
             { 
                 data: 'lockers',
