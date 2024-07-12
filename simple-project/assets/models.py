@@ -10,8 +10,14 @@ class Patrimony(models.Model):
         blank=False,
         db_index=True
     )
+    code = models.CharField(
+        max_length=15,
+        verbose_name="Codigo",
+        null=True,
+        blank=True
+    )
     location = models.CharField(
-        max_length=30,
+        max_length=40,
         verbose_name="Ubicacíon",
         null=True,
         blank=True
